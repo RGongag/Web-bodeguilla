@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=UnifrakturCook:wght@700&display=swap');
+
+:root {
+  color-scheme: light;
+  --tinta: #17130f;
+  --papel: #f5f0e4;
+  --papel-claro: #fffaf0;
+  --oro: #8b7046;
+  --linea: rgba(42, 32, 21, .28);
+  --fuente-texto: 'Cormorant Garamond', Georgia, serif;
+  --fuente-titulos: 'UnifrakturCook', 'Old English Text MT', Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 0;
+  color: var(--tinta);
+  background-color: #e9e2d2;
+  background-image:
+    radial-gradient(ellipse at 20% 15%, rgba(255,255,255,.78), transparent 45%),
+    radial-gradient(ellipse at 80% 80%, rgba(172,153,119,.13), transparent 50%),
+    repeating-linear-gradient(0deg, rgba(70,55,35,.018) 0, rgba(70,55,35,.018) 1px, transparent 1px, transparent 4px);
+  font-family: var(--fuente-texto);
+}
+
+main {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: clamp(28px, 5vw, 64px) clamp(22px, 7vw, 100px) 38px;
+  overflow: hidden;
+  background: rgba(250, 247, 238, .88);
+  border: 1px solid var(--linea);
+  box-shadow: 0 18px 55px rgba(37, 29, 20, .16), inset 0 0 0 7px rgba(255,255,255,.32);
+}
+
+main::before {
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(42, 32, 21, .14);
+  content: '';
+  pointer-events: none;
+}
+
+.cabecera, .categorias, .precio, .sorteo { position: relative; }
+
+.cabecera {
+  margin-bottom: 36px;
+  text-align: center;
+}
+
+.logo-bar {
+  display: block;
+  width: min(180px, 42vw);
+  height: 120px;
+  margin: 0 auto 10px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.sobretitulo {
+  margin: 0 0 5px;
+  color: var(--oro);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+
+h1, section h2 {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(38px, 6vw, 58px);
+  line-height: 1.05;
+}
+
+.cabecera::after {
+  display: block;
+  width: 96px;
+  height: 1px;
+  margin: 20px auto 0;
+  background: var(--oro);
+  content: '';
+}
+
+.categorias {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 48px;
+}
+
+section h2 {
+  margin: 0 0 12px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--linea);
+  font-size: 31px;
+  line-height: 1.1;
+}
+
+ul { margin: 0; padding: 0; list-style: none; }
+
+li {
+  display: flex;
+  min-height: 52px;
+  align-items: center;
+  gap: 13px;
+  margin: 0;
+  padding: 5px 2px;
+  border-bottom: 1px dotted rgba(42, 32, 21, .2);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+li img, .icono-casa {
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.icono-casa {
+  display: grid;
+  place-items: center;
+  font-family: Georgia, serif;
+  font-size: 34px;
+}
+
+.precio {
+  margin-top: 34px;
+  padding-top: 18px;
+  border-top: 1px solid var(--linea);
+  text-align: center;
+  font-size: 38px;
+  font-weight: 700;
+}
+
+.sorteo {
+  margin-top: 28px;
+  padding: 22px;
+  border: 1px solid var(--linea);
+  background: rgba(255, 252, 244, .66);
+  text-align: center;
+}
+
+.sorteo h2 { margin-bottom: 7px; border: 0; }
+.sorteo p { margin: 8px 0; font-size: 19px; }
+
+button {
+  padding: 11px 20px;
+  color: var(--papel-claro);
+  background: var(--tinta);
+  border: 1px solid var(--tinta);
+  font: 600 17px var(--fuente-texto);
+  cursor: pointer;
+  transition: background-color .18s ease, color .18s ease;
+}
+
+button:hover { color: var(--tinta); background: transparent; }
+button:focus-visible { outline: 3px solid var(--oro); outline-offset: 4px; }
+
+#resultado {
+  min-height: 28px;
+  color: var(--oro);
+  font-size: 25px;
+  font-weight: 700;
+}
+
+@media (max-width: 650px) {
+  main { padding: 26px 20px 24px; }
+  main::before { inset: 7px; }
+  .categorias { grid-template-columns: 1fr; gap: 23px; }
+  .logo-bar { height: 95px; }
+  li { font-size: 21px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+}
