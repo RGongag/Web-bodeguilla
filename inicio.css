@@ -218,7 +218,16 @@ footer a { text-decoration: none; }
     padding: 118px 34px 78px;
   }
   .hero::after { top: 28%; right: -23%; width: 70vw; }
-  .hero-sello { position: absolute; right: 8%; bottom: 14%; width: 39vw; min-width: 140px; opacity: .82; }
+  .hero-sello {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    align-self: center;
+    width: min(36vw, 170px);
+    min-width: 0;
+    margin: 0 auto;
+    opacity: .9;
+  }
   .hero-sello span { font-size: 10px; }
   .hero-texto { max-width: 100%; }
   .eyebrow { font-size: 12px; letter-spacing: .12em; }
@@ -235,7 +244,7 @@ footer a { text-decoration: none; }
 
 @media (max-width: 390px) {
   .hero { padding-right: 24px; padding-left: 24px; }
-  .hero-sello { right: 5%; bottom: 13%; width: 35vw; min-width: 118px; }
+  .hero-sello { width: min(34vw, 138px); }
   .hero-pie { right: 24px; left: 24px; font-size: 9px; }
   .visita-enlaces { align-items: flex-start; flex-direction: column; }
 }
