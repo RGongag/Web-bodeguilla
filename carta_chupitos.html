@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta de chupitos</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      color: #eee3cf;
+      background: #171310;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    main {
+      max-width: 950px;
+      margin: 10px auto;
+      padding: 42px;
+      background: #211c19;
+      border: 2px solid #a88b5b;
+    }
+
+    h1 {
+      margin: 0 0 32px;
+      padding-bottom: 18px;
+      color: #d9bd83;
+      border-bottom: 1px solid #a88b5b;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-size: 32px;
+      font-weight: normal;
+    }
+
+    .categorias {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px 24px;
+    }
+
+    section h2 {
+      margin: 0 0 15px;
+      padding-bottom: 8px;
+      color: #d9bd83;
+      border-bottom: 1px solid #6f5b40;
+      font-size: 25px;
+      letter-spacing: 1px;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      margin-bottom: 12px;
+      padding: 12px 14px;
+      color: #eee3cf;
+      background: #2c2520;
+      border: 1px solid #594936;
+      border-radius: 3px;
+      font-size: 18px;
+    }
+
+    li::before {
+      content: "✦  ";
+      color: #d9bd83;
+    }
+
+    .precio {
+      margin-top: 28px;
+      padding-top: 18px;
+      color: #f0d7a0;
+      border-top: 1px solid #a88b5b;
+      text-align: center;
+      font-size: 25px;
+    }
+
+    .sorteo {
+      margin-top: 30px;
+      padding: 24px;
+      text-align: center;
+      border: 1px solid #6f5b40;
+      background: #29221d;
+    }
+
+    .sorteo h2 {
+      margin: 0 0 10px;
+      color: #d9bd83;
+      font-size: 24px;
+    }
+
+    .sorteo p {
+      color: #c9bda9;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    button {
+      padding: 13px 22px;
+      color: #211c19;
+      background: #d9bd83;
+      border: 1px solid #f0d7a0;
+      border-radius: 3px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover { background: #f0d7a0; }
+    button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+
+    #resultado {
+      min-height: 32px;
+      margin: 18px 0 0;
+      color: #f0d7a0;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    @media (max-width: 650px) {
+      body { padding: 10px; }
+      main { padding: 22px; }
+      h1 { font-size: 25px; letter-spacing: 3px; }
+      .categorias { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Carta de chupitos</h1>
+
+    <div class="categorias">
+      <section>
+        <h2>Susurros</h2>
+        <ul>
+          <li>Piñatera</li>
+          <li>Teta de novicia</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Pactos</h2>
+        <ul>
+          <li>Midnight Pussy</li>
+          <li>Picoleto</li>
+          <li>Mike Tyson</li>
+          <li>Ruso Negro</li>
+          <li>G-Spot</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Conjuros</h2>
+        <ul>
+          <li>Vampiro</li>
+          <li>Nazareno</li>
+          <li>Anticongelante</li>
+          <li>Naranjito</li>
+          <li>Secreto de Vinato</li>
+          <li>Cerebrito</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Condenas</h2>
+        <ul>
+          <li>Afterburner</li>
+          <li>Pablo</li>
+          <li>Escoge la casa</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="precio">1,50 € por chupito</div>
+
+    <section class="sorteo" aria-labelledby="titulo-sorteo">
+      <h2 id="titulo-sorteo">¿Cuál te toca?</h2>
+      <p>Pulsa el botón para elegir un chupito al azar.</p>
+      <button id="elegir" type="button">Elegir chupito al azar</button>
+      <p id="resultado" aria-live="polite">Tu chupito aparecerá aquí</p>
+    </section>
+  </main>
+
+  <script>
+    const chupitos = [
+      "Piruleta",
+      "Teta de novicia",
+      "Vampiro",
+      "Nazareno",
+      "Anticongelante",
+      "Naranjito",
+      "Secreto de Vitiato",
+      "Cerebrito",
+      "Midnight Pussy",
+      "Picoleto",
+      "Mike Tyson",
+      "Ruso Negro",
+      "G-Spot",
+      "Afterburner",
+      "Pablo",
+      "Escoge la casa"
+    ];
+
+    const boton = document.getElementById("elegir");
+    const resultado = document.getElementById("resultado");
+
+    boton.addEventListener("click", () => {
+      const indice = Math.floor(Math.random() * chupitos.length);
+      resultado.textContent = chupitos[indice];
+    });
+  </script>
+</body>
+</html>
