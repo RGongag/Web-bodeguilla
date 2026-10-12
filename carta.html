@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta de chupitos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <header class="cabecera">
+      <img class="logo-bar" src="images/LogoCentro.png" alt="Logo del bar">
+      <p class="sobretitulo">El oráculo de la noche</p>
+      <h1>Carta de chupitos</h1>
+    </header>
+
+    <div class="categorias">
+      <section>
+        <h2>Susurros</h2>
+        <ul>
+          <li><img src="images/Piruleta-removebg-preview.png" alt=""><span>Piruleta</span></li>
+          <li><img src="images/Tetadenovicia-removebg-preview.png" alt=""><span>Teta de novicia</span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Pactos</h2>
+        <ul>
+          <li><img src="images/Midnightpussy-removebg-preview.png" alt=""><span>Midnight Pussy</span></li>
+          <li><img src="images/Picoleto-removebg-preview.png" alt=""><span>Picoleto</span></li>
+          <li><img src="images/MikeTysson-removebg-preview.png" alt=""><span>Mike Tyson</span></li>
+          <li><img src="images/Rusonegro-removebg-preview.png" alt=""><span>Ruso Negro</span></li>
+          <li><img src="images/Gspot-removebg-preview.png" alt=""><span>G-Spot</span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Conjuros</h2>
+        <ul>
+          <li><img src="images/vampiro-removebg-preview.png" alt=""><span>Vampiro</span></li>
+          <li><img src="images/nazareno-removebg-preview.png" alt=""><span>Nazareno</span></li>
+          <li><img src="images/anticongelante-removebg-preview.png" alt=""><span>Anticongelante</span></li>
+          <li><img src="images/Naranjito-removebg-preview.png" alt=""><span>Naranjito</span></li>
+          <li><img src="images/SecretodeViriato-removebg-preview.png" alt=""><span>Secreto de Viriato</span></li>
+          <li><img src="images/Cerebrito-removebg-preview.png" alt=""><span>Cerebrito</span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Condenas</h2>
+        <ul>
+          <li><img src="images/Afterburner-removebg-preview.png" alt=""><span>Afterburner</span></li>
+          <li><img src="images/pablo-removebg-preview.png" alt=""><span>Pablo</span></li>
+          <li class="sin-logo"><span class="icono-casa" aria-hidden="true">☠</span><span>Escoge la casa</span></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="precio">1,50 € por chupito</div>
+
+    <section class="sorteo" aria-labelledby="titulo-sorteo">
+      <h2 id="titulo-sorteo">¿Cuál te toca?</h2>
+      <p>Pulsa el botón para elegir un chupito al azar.</p>
+      <button id="elegir" type="button">Elegir chupito al azar</button>
+      <div id="resultado" aria-live="polite" role="status">
+        <img id="logo-resultado" src="" alt="" hidden>
+        <span id="simbolo-resultado" aria-hidden="true" hidden>☠</span>
+        <span id="texto-resultado">Tu chupito aparecerá aquí</span>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const chupitos = [
+      { nombre: "Piruleta", logo: "images/Piruleta-removebg-preview.png" },
+      { nombre: "Teta de novicia", logo: "images/Tetadenovicia-removebg-preview.png" },
+      { nombre: "Vampiro", logo: "images/vampiro-removebg-preview.png" },
+      { nombre: "Nazareno", logo: "images/nazareno-removebg-preview.png" },
+      { nombre: "Anticongelante", logo: "images/anticongelante-removebg-preview.png" },
+      { nombre: "Naranjito", logo: "images/Naranjito-removebg-preview.png" },
+      { nombre: "Secreto de Viriato", logo: "images/SecretodeViriato-removebg-preview.png" },
+      { nombre: "Cerebrito", logo: "images/Cerebrito-removebg-preview.png" },
+      { nombre: "Midnight Pussy", logo: "images/Midnightpussy-removebg-preview.png" },
+      { nombre: "Picoleto", logo: "images/Picoleto-removebg-preview.png" },
+      { nombre: "Mike Tyson", logo: "images/MikeTysson-removebg-preview.png" },
+      { nombre: "Ruso Negro", logo: "images/Rusonegro-removebg-preview.png" },
+      { nombre: "G-Spot", logo: "images/Gspot-removebg-preview.png" },
+      { nombre: "Afterburner", logo: "images/Afterburner-removebg-preview.png" },
+      { nombre: "Pablo", logo: "images/pablo-removebg-preview.png" },
+      { nombre: "Escoge la casa", simbolo: "☠" }
+    ];
+
+    const boton = document.getElementById("elegir");
+    const textoResultado = document.getElementById("texto-resultado");
+    const logoResultado = document.getElementById("logo-resultado");
+    const simboloResultado = document.getElementById("simbolo-resultado");
+
+    boton.addEventListener("click", () => {
+      const indice = Math.floor(Math.random() * chupitos.length);
+      const chupito = chupitos[indice];
+      textoResultado.textContent = chupito.nombre;
+      logoResultado.hidden = !chupito.logo;
+      simboloResultado.hidden = !chupito.simbolo;
+
+      if (chupito.logo) logoResultado.src = chupito.logo;
+      if (chupito.simbolo) simboloResultado.textContent = chupito.simbolo;
+    });
+  </script>
+</body>
+</html>
