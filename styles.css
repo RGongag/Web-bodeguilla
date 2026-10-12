@@ -168,10 +168,28 @@ button:hover { color: var(--tinta); background: transparent; }
 button:focus-visible { outline: 3px solid var(--oro); outline-offset: 4px; }
 
 #resultado {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   min-height: 28px;
+  margin: 18px 0 0;
   color: var(--oro);
   font-size: 25px;
   font-weight: 700;
+}
+
+#logo-resultado {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+#simbolo-resultado {
+  color: var(--tinta);
+  font-family: Georgia, serif;
+  font-size: 48px;
+  line-height: 1;
 }
 
 @media (max-width: 650px) {

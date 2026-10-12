@@ -62,36 +62,48 @@
       <h2 id="titulo-sorteo">¿Cuál te toca?</h2>
       <p>Pulsa el botón para elegir un chupito al azar.</p>
       <button id="elegir" type="button">Elegir chupito al azar</button>
-      <p id="resultado" aria-live="polite">Tu chupito aparecerá aquí</p>
+      <div id="resultado" aria-live="polite" role="status">
+        <img id="logo-resultado" src="" alt="" hidden>
+        <span id="simbolo-resultado" aria-hidden="true" hidden>☠</span>
+        <span id="texto-resultado">Tu chupito aparecerá aquí</span>
+      </div>
     </section>
   </main>
 
   <script>
     const chupitos = [
-      "Piruleta",
-      "Teta de novicia",
-      "Vampiro",
-      "Nazareno",
-      "Anticongelante",
-      "Naranjito",
-      "Secreto de Viriato",
-      "Cerebrito",
-      "Midnight Pussy",
-      "Picoleto",
-      "Mike Tyson",
-      "Ruso Negro",
-      "G-Spot",
-      "Afterburner",
-      "Pablo",
-      "Escoge la casa"
+      { nombre: "Piruleta", logo: "images/Piruleta-removebg-preview.png" },
+      { nombre: "Teta de novicia", logo: "images/Tetadenovicia-removebg-preview.png" },
+      { nombre: "Vampiro", logo: "images/vampiro-removebg-preview.png" },
+      { nombre: "Nazareno", logo: "images/nazareno-removebg-preview.png" },
+      { nombre: "Anticongelante", logo: "images/anticongelante-removebg-preview.png" },
+      { nombre: "Naranjito", logo: "images/Naranjito-removebg-preview.png" },
+      { nombre: "Secreto de Viriato", logo: "images/SecretodeViriato-removebg-preview.png" },
+      { nombre: "Cerebrito", logo: "images/Cerebrito-removebg-preview.png" },
+      { nombre: "Midnight Pussy", logo: "images/Midnightpussy-removebg-preview.png" },
+      { nombre: "Picoleto", logo: "images/Picoleto-removebg-preview.png" },
+      { nombre: "Mike Tyson", logo: "images/MikeTysson-removebg-preview.png" },
+      { nombre: "Ruso Negro", logo: "images/Rusonegro-removebg-preview.png" },
+      { nombre: "G-Spot", logo: "images/Gspot-removebg-preview.png" },
+      { nombre: "Afterburner", logo: "images/Afterburner-removebg-preview.png" },
+      { nombre: "Pablo", logo: "images/pablo-removebg-preview.png" },
+      { nombre: "Escoge la casa", simbolo: "☠" }
     ];
 
     const boton = document.getElementById("elegir");
-    const resultado = document.getElementById("resultado");
+    const textoResultado = document.getElementById("texto-resultado");
+    const logoResultado = document.getElementById("logo-resultado");
+    const simboloResultado = document.getElementById("simbolo-resultado");
 
     boton.addEventListener("click", () => {
       const indice = Math.floor(Math.random() * chupitos.length);
-      resultado.textContent = chupitos[indice];
+      const chupito = chupitos[indice];
+      textoResultado.textContent = chupito.nombre;
+      logoResultado.hidden = !chupito.logo;
+      simboloResultado.hidden = !chupito.simbolo;
+
+      if (chupito.logo) logoResultado.src = chupito.logo;
+      if (chupito.simbolo) simboloResultado.textContent = chupito.simbolo;
     });
   </script>
 </body>
