@@ -212,27 +212,40 @@ footer a { text-decoration: none; }
   .hero {
     min-height: 100svh;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     gap: 30px;
     padding: 118px 34px 78px;
+    text-align: center;
   }
-  .hero::after { top: 28%; right: -23%; width: 70vw; }
+  .hero::after { top: auto; right: -25%; bottom: 10%; width: 68vw; opacity: .28; }
   .hero-sello {
     position: relative;
     right: auto;
     bottom: auto;
     align-self: center;
-    width: min(36vw, 170px);
+    width: 118px;
     min-width: 0;
     margin: 0 auto;
-    opacity: .9;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    opacity: 1;
   }
-  .hero-sello span { font-size: 10px; }
+  .hero-sello img {
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    border: 1px solid rgba(199,167,108,.6);
+    border-radius: 50%;
+    background: var(--crema);
+  }
+  .hero-sello span { display: none; }
   .hero-texto { max-width: 100%; }
-  .eyebrow { font-size: 12px; letter-spacing: .12em; }
+  .hero-texto .eyebrow { justify-content: center; font-size: 12px; letter-spacing: .12em; }
   h1 { font-size: clamp(54px, 14vw, 88px); }
-  .intro { max-width: 340px; font-size: 19px; }
+  .intro { max-width: 340px; margin-right: auto; margin-left: auto; font-size: 19px; }
   .hero-pie { font-size: 10px; letter-spacing: .06em; }
   .presentacion { grid-template-columns: 1fr; gap: 25px; padding: 58px 28px; }
   .presentacion h2 { font-size: 54px; }
@@ -244,7 +257,7 @@ footer a { text-decoration: none; }
 
 @media (max-width: 390px) {
   .hero { padding-right: 24px; padding-left: 24px; }
-  .hero-sello { width: min(34vw, 138px); }
+  .hero-sello { width: 104px; }
   .hero-pie { right: 24px; left: 24px; font-size: 9px; }
   .visita-enlaces { align-items: flex-start; flex-direction: column; }
 }
